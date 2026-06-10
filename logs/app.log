@@ -1,0 +1,154 @@
+2026-06-07 21:44:44,340 | INFO | Hello endpoint called
+2026-06-07 21:49:57,610 | INFO | Prompt received: hi
+2026-06-07 21:49:57,905 | ERROR | Groq API failed
+Traceback (most recent call last):
+  File "D:\divami\divami-ai-session\app\services\chat_bot_service.py", line 14, in generate_response
+    completion = client.chat.completions.create(
+        model=settings.GROQ_MODEL,
+    ...<5 lines>...
+        ]
+    )
+  File "C:\Users\DELL\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\groq\resources\chat\completions.py", line 461, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/openai/v1/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<45 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\DELL\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\groq\_base_client.py", line 1071, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.AuthenticationError: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2026-06-07 22:00:04,474 | INFO | Prompt received: hi
+2026-06-07 22:00:05,018 | ERROR | Groq API failed
+Traceback (most recent call last):
+  File "D:\divami\divami-ai-session\app\services\chat_bot_service.py", line 24, in generate_response
+    answer = completion.choices[0].message.conent
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pydantic\main.py", line 1026, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'ChatCompletionMessage' object has no attribute 'conent'. Did you mean: 'content'?
+2026-06-07 22:01:06,048 | INFO | Prompt received: hi
+2026-06-07 22:01:06,443 | INFO | Response generaed successfully
+2026-06-07 22:02:50,171 | INFO | Prompt received: who are you ?
+2026-06-07 22:02:50,466 | INFO | Response generaed successfully
+2026-06-10 11:02:07,850 | INFO | Prompt received: When was iphone 16 launched ?
+2026-06-10 11:02:07,992 | ERROR | Groq API failed
+Traceback (most recent call last):
+  File "D:\divami\divami-ai-session\app\services\tool_calling_service.py", line 19, in generate_response
+    role: 'system',
+    ^^^^
+NameError: name 'role' is not defined
+2026-06-10 11:03:20,101 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 11:03:20,193 | ERROR | Groq API failed
+Traceback (most recent call last):
+  File "D:\divami\divami-ai-session\app\services\tool_calling_service.py", line 14, in generate_response
+    completion = client.chat.completions.create(
+        model=settings.GROQ_MODEL,
+    ...<10 lines>...
+        ]
+    )
+TypeError: Completions.create() got an unexpected keyword argument 'tempreture'. Did you mean 'temperature'?
+2026-06-10 11:04:12,826 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 11:04:13,588 | INFO | Response generaed successfully
+2026-06-10 11:33:18,354 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 11:33:18,664 | ERROR | Groq API failed
+Traceback (most recent call last):
+  File "D:\divami\divami-ai-session\app\services\tool_calling_service.py", line 17, in generate_response
+    completion = client.chat.completions.create(
+        model=settings.GROQ_MODEL,
+    ...<35 lines>...
+        tool_choice= "auto"
+    )
+  File "C:\Users\DELL\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\groq\resources\chat\completions.py", line 461, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/openai/v1/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<45 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\DELL\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\groq\_base_client.py", line 1071, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.BadRequestError: Error code: 400 - {'error': {'message': 'invalid JSON schema for tool webSearch, tools[0].function.parameters: jsonschema file:///home/di/params.json compilation failed: \'/properties/query/type\' does not validate with https://json-schema.org/draft/2020-12/schema#/allOf/1/$ref/properties/properties/additionalProperties/$dynamicRef/allOf/3/$ref/properties/type/anyOf/0/$ref/enum: value must be one of "array", "boolean", "integer", "null", "number", "object", "string"', 'type': 'invalid_request_error', 'param': 'tool webSearch, tools[0].function.parameters'}}
+2026-06-10 11:35:11,164 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 11:35:11,402 | ERROR | Groq API failed
+Traceback (most recent call last):
+  File "D:\divami\divami-ai-session\app\services\tool_calling_service.py", line 17, in generate_response
+    completion = client.chat.completions.create(
+        model=settings.GROQ_MODEL,
+    ...<35 lines>...
+        tool_choice= "auto"
+    )
+  File "C:\Users\DELL\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\groq\resources\chat\completions.py", line 461, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/openai/v1/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<45 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\DELL\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\groq\_base_client.py", line 1071, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.BadRequestError: Error code: 400 - {'error': {'message': 'invalid JSON schema for tool webSearch, tools[0].function.parameters: jsonschema file:///home/di/params.json compilation failed: \'/properties/query/type\' does not validate with https://json-schema.org/draft/2020-12/schema#/allOf/1/$ref/properties/properties/additionalProperties/$dynamicRef/allOf/3/$ref/properties/type/anyOf/0/$ref/enum: value must be one of "array", "boolean", "integer", "null", "number", "object", "string"', 'type': 'invalid_request_error', 'param': 'tool webSearch, tools[0].function.parameters'}}
+2026-06-10 11:36:52,226 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 11:38:03,427 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 11:38:04,182 | ERROR | Groq API failed
+Traceback (most recent call last):
+  File "D:\divami\divami-ai-session\app\services\tool_calling_service.py", line 17, in generate_response
+    completion = await client.chat.completions.create(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<37 lines>...
+    )
+    ^
+TypeError: 'ChatCompletion' object can't be awaited
+2026-06-10 11:38:22,466 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 11:42:01,766 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 11:42:02,401 | INFO | Response generated successfully==: ChatCompletion(id='chatcmpl-eb4336d6-d72c-45ea-8aae-23840a8e1d40', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content=None, role='assistant', annotations=None, executed_tools=None, function_call=None, reasoning=None, tool_calls=[ChatCompletionMessageToolCall(id='x0t6mce90', function=Function(arguments='{"query":"iPhone 16 launch date"}', name='webSearch'), type='function')]))], created=1781071922, model='llama-3.3-70b-versatile', object='chat.completion', mcp_list_tools=None, service_tier='on_demand', system_fingerprint='fp_0761e44d7b', usage=CompletionUsage(completion_tokens=19, prompt_tokens=282, total_tokens=301, completion_time=0.029829835, completion_tokens_details=None, prompt_time=0.026627391, prompt_tokens_details=None, queue_time=0.287258311, total_time=0.056457226), usage_breakdown=None, x_groq=XGroq(id='req_01ktr2hgtcfzjacfrvajcwwnp6', debug=None, seed=950337356, usage=None))
+2026-06-10 11:42:32,984 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 11:42:33,158 | INFO | Response generated successfully==: ChatCompletion(id='chatcmpl-224a23d3-e0db-482c-86da-908cfb453ca1', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content=None, role='assistant', annotations=None, executed_tools=None, function_call=None, reasoning=None, tool_calls=[ChatCompletionMessageToolCall(id='71mjf304x', function=Function(arguments='{"query":"iPhone 16 launch date"}', name='webSearch'), type='function')]))], created=1781071953, model='llama-3.3-70b-versatile', object='chat.completion', mcp_list_tools=None, service_tier='on_demand', system_fingerprint='fp_dae98b5ecb', usage=CompletionUsage(completion_tokens=19, prompt_tokens=282, total_tokens=301, completion_time=0.029345985, completion_tokens_details=None, prompt_time=0.02361801, prompt_tokens_details=None, queue_time=0.050203489, total_time=0.052963995), usage_breakdown=None, x_groq=XGroq(id='req_01ktr2jf4vfezbzcgq679hzd47', debug=None, seed=526070259, usage=None))
+2026-06-10 11:43:11,536 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 11:44:32,778 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 11:45:11,506 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 11:47:32,619 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 11:48:57,394 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 11:48:57,961 | INFO | Response generated successfully: None
+2026-06-10 11:50:35,621 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 11:50:36,102 | INFO | Response generated successfully: ChatCompletionMessage(content=None, role='assistant', annotations=None, executed_tools=None, function_call=None, reasoning=None, tool_calls=[ChatCompletionMessageToolCall(id='e2s0dndzy', function=Function(arguments='{"query":"iPhone 16 launch date"}', name='webSearch'), type='function')])
+2026-06-10 11:52:14,380 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 11:52:14,983 | INFO | Response generated successfully: Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content=None, role='assistant', annotations=None, executed_tools=None, function_call=None, reasoning=None, tool_calls=[ChatCompletionMessageToolCall(id='rfdfv2zp9', function=Function(arguments='{"query":"iPhone 16 launch date"}', name='webSearch'), type='function')]))
+2026-06-10 11:52:47,296 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 12:20:08,762 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 12:20:09,264 | ERROR | Groq API failed
+Traceback (most recent call last):
+  File "D:\divami\divami-ai-session\app\services\tool_calling_service.py", line 64, in generate_response
+    args = json.loads(tool_call.function.arguments)
+           ^^^^
+NameError: name 'json' is not defined. Did you forget to import 'json'?
+2026-06-10 12:20:51,896 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 12:47:26,730 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 13:12:11,273 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 14:01:43,988 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 14:01:46,525 | ERROR | Groq API failed
+Traceback (most recent call last):
+  File "D:\divami\divami-ai-session\app\services\tool_calling_service.py", line 80, in generate_response
+    tool_call_id: tool_call.id,
+    ^^^^^^^^^^^^
+NameError: name 'tool_call_id' is not defined. Did you mean: 'tool_call'?
+2026-06-10 14:02:42,991 | INFO | Prompt received: When was iPhone 16 launched ?
+2026-06-10 14:04:14,634 | INFO | Prompt received: When was iPhone 16 launched ?
